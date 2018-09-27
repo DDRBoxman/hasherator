@@ -25,6 +25,8 @@ func (a *AssetsDir) Run(sourcePath, workingPath string, noHashDirs []string) err
 		return fmt.Errorf("failed to remove working directory prior to copy: " + err.Error())
 	}
 
+	os.MkdirAll(workingPath ,0777)
+
 	err = a.recursiveHashAndCopy(sourcePath, workingPath)
 	if err != nil {
 		return err
